@@ -1,8 +1,11 @@
-import{render,screen} from '@testing-library/react';
-import loginSelect from './loginSelect';
+import React from 'react'
+import {render, screen} from '@testing-library/react'
+import '@testing-library/jest-dom'
+import {LoginSelect} from './loginSelect'
 
-test('renders learn react link', () => {
-   render(<loginSelect />);
-   screen.debug();
-    expect(screen.getByText(/login/i)).toBeInTheDocument();
-} );
+test('NameConsumer shows default value', () => {
+    render(<LoginSelect />)
+    expect(screen.getByText(/^My Name Is:/)).toHaveTextContent(
+      'My Name Is: Unknown',
+    )
+  })
