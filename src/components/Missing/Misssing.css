@@ -1,0 +1,16 @@
+h1.content-title {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  
+  .content {
+    background-image: url(../../images/Contentbg.jpeg);
+    margin-top: 14%;
+
+  }
+  
+  .content-button {
+    background-color: #f9ca24;
+    font-size: 14px;
+    font-weight: bold;
+  }
