@@ -14,6 +14,9 @@ function NavBar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
+  const name = users[authedUser].name;
+  const avatarURL = users[authedUser].avatarURL;
   const handleLogout = () => {
     dispatch(removeauthedUser(null))
     navigate("/")
@@ -25,12 +28,12 @@ function NavBar() {
         <Navbar.Brand>
           <Image
             roundedCircle
-            src={users[authedUser]?.avatarURL}
+            src={avatarURL}
             width="40"
             height="40"
             className="d-inline-block align-top"
           />{" "}
-          <small>Hi! {users[authedUser]?.name}</small>
+          <small>Hi! {name}</small>
         </Navbar.Brand>
         <Nav.Link href="/dashboard">Home</Nav.Link>
       <Nav.Link href="/add">Create Poll</Nav.Link>

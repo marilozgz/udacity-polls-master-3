@@ -1,8 +1,8 @@
-import React from "react";
+import React , {useState}from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addQuestion } from "../../features/questions";
+import  { addQuestion } from "../../features/questions";
 import { getAuthedUserId } from "../../selectors/users";
 import { generateUID } from "../../utils/_DATA";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
@@ -18,13 +18,13 @@ const CreatePoll = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const author = useSelector(getAuthedUserId);
+  const [disabledButton, setDisabledButton] = useState(false);
 
   return (
     <Formik
       validationSchema={schema}
       onSubmit={(values) => {
-        console.log("alues.optionOne");
-
+        setDisabledButton(false);
         dispatch(addQuestion({ ...values, author, id: generateUID() }));
         navigate(-1)
 
@@ -32,6 +32,7 @@ const CreatePoll = () => {
       initialValues={{
         optionOne: "",
         optionTwo: "",
+        disabledButton : true
       }}
     >
       {({ handleSubmit, handleChange, values, touched, isValid, errors }) => (
@@ -45,27 +46,30 @@ const CreatePoll = () => {
             <Row>
               <Form.Text>Would you rather?</Form.Text>
 
-              <Form.Group className="mb-3" controlId="option2">
+              <Form.Group className="mb-3" controlId="optionOneText">
                 <Form.Control
                   name="optionOne"
                   type="text"
+                  data-testid="optionOneText"
                   placeholder="Input your 'Option One' here"
                   value={values.optionOne}
                   onChange={handleChange}
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="option1">
+              <Form.Group className="mb-3" controlId="optionTwoText">
                 <Form.Control
                   name="optionTwo"
                   type="text"
+                  data-testid="optionTwoText"
                   placeholder="Input your 'Option Two' here"
                   value={values.optionTwo}
                   onChange={handleChange}
                   required
                 />
               </Form.Group>
-              <Button type="submit">Create Poll</Button>
+              <button className=" btn btn-success col-xs-11 col-sm-5 col-md-5 col-lg-5" type="submit" data-testid='submit-button'
+              disabled={disabledButton} >Create Poll</button>
             </Row>
           </Container>
         </Form>
