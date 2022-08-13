@@ -4,11 +4,11 @@ import Dashboard from "../views/Dashboard";
 import { screen } from "@testing-library/react";
 import { render } from '@testing-library/react'
 import { BrowserRouter } from "react-router-dom";
-
+import thunk from 'redux-thunk';
 import '@testing-library/jest-dom'
 
 
-const mockStore = configureStore([]);
+const mockStore = configureStore([thunk]);
 
 describe('My Connected Question Component', () => {
     let mockedStore;
