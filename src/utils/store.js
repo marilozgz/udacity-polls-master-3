@@ -25,9 +25,15 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(logger),
 });
 
+export const setupStore = preloadedState => {
+  return configureStore({
+    reducer: reducer,
+    preloadedState
+  })
+}
 export const persistor = persistStore(store)
