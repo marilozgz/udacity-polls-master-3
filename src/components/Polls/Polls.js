@@ -12,7 +12,7 @@ const Polls = () => {
 
   return (
     <Container fluid>
-    <Button variant="primary" onClick={() => toggleShow(!show)}>   {show ? 'Completed Questions' : 'New Questions'}</Button>
+    <Button id="changepolls"variant="primary" onClick={() => toggleShow(!show)}>   {show ? 'Completed Questions' : 'New Questions'}</Button>
      {show && <PollsUnanswered />  } 
     {!show && <PollsAnswered />  }  
        
