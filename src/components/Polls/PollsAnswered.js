@@ -2,7 +2,7 @@ import React  from "react";
 import {Row, Col} from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Card from "../Cards/Card";
-
+import './polls.css'
 const PollsAnswered = () => {
     const questions = useSelector((state) => state.questions.questions);
     const authedUser = useSelector((state) => state.authedUser.authedUser);

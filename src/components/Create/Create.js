@@ -8,7 +8,7 @@ import { generateUID } from "../../utils/_DATA";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
+import "./createpoll.css"
 const schema = Yup.object().shape({
   optionOne: Yup.string().required(),
   optionTwo: Yup.string().required(),
@@ -26,7 +26,7 @@ const CreatePoll = () => {
       onSubmit={(values) => {
         setDisabledButton(false);
         dispatch(addQuestion({ ...values, author, id: generateUID() }));
-        navigate(-1)
+        navigate("/dashboard");
 
       }}
       initialValues={{
@@ -38,12 +38,12 @@ const CreatePoll = () => {
       {({ handleSubmit, handleChange, values, touched, isValid, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <Container fluid>
-            <Row>
+            <Row className="header">
               <Col>
                 <h2>Create a Poll</h2>
               </Col>
             </Row>
-            <Row>
+            <Row className="body-createpolls">
               <Form.Text>Would you rather?</Form.Text>
 
               <Form.Group className="mb-3" controlId="optionOneText">
@@ -68,7 +68,7 @@ const CreatePoll = () => {
                   required
                 />
               </Form.Group>
-              <button className=" btn btn-success col-xs-11 col-sm-5 col-md-5 col-lg-5" type="submit" data-testid='submit-button'
+              <button className=" btn btn-success col-xs-3 col-sm-3 col-md-3 col-lg-3" type="submit" data-testid='submit-button'
               disabled={disabledButton} >Create Poll</button>
             </Row>
           </Container>
