@@ -26,3 +26,9 @@ h1.content-title {
   font-size: 14px;
   font-weight: bold;
 }
+.loginform{
+  background-color: #f9ca24;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 40px;
+}
