@@ -8,7 +8,31 @@ const PollsAnswered = () => {
     const authedUser = useSelector((state) => state.authedUser.authedUser);
     const users = useSelector((state) => state.users.users);
 
-   
+    const answeredQuestions = Object.keys(questions)
+    .filter((i) => (
+      questions[i].optionOne.votes.includes(authedUser) ||
+      questions[i].optionTwo.votes.includes(authedUser)
+    ))
+    .sort((a,b) => (
+      questions[b].timestamp - questions[a].timestamp
+    ))
+    .map(question => {
+      const mapAsweredQuestions = {
+        id: questions[question].id,
+        author: questions[question].author,
+        avatarURL: users[questions[question].author].avatarURL,
+        timestamp: questions[question].timestamp,
+        optionOne: {
+          votes: questions[question].optionOne.votes,
+          text: questions[question].optionOne.text,
+        },
+        optionTwo: {
+          votes: questions[question].optionTwo.votes,
+          text: questions[question].optionTwo.text,
+        }
+      }
+    return mapAsweredQuestions;
+    });
 
     return(
         <div>
@@ -16,22 +40,18 @@ const PollsAnswered = () => {
           <h2 style={{ textAlign: "center" }}>Completed Questions</h2>
         </Row>
         <Row className="justify-content-md-center mb-5">
-          {Object.keys(questions).sort((a,b)=>b.timestamp - a.timestamp).map((question) => {
-            if (users[authedUser]?.answers[question]) {
-              return (
-                <Col md="auto" key={question}>
+        {answeredQuestions.map(q => (
+                <Col md="auto" key={q}>
                   <Card
-                    image={users[questions[question].author].avatarURL}
-                    date={questions[question].timestamp}
-                    author={questions[question].author}
-                    id={questions[question].id}
-                    key={questions[question].id}
+                    image={q.avatarURL}
+                    date={q.timestamp}
+                    author={q.author}
+                    id={q.id}
+                    key={q.id}
                   />
                 </Col>
-              );
-            }
-            return null;
-          })}
+              ))}
+         
         </Row>
         </div>
     )
