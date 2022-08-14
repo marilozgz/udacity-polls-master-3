@@ -17,8 +17,8 @@ export function PollsUnanswered (props) {
         {Object.keys(questions).sort((a,b)=>b.timestamp - a.timestamp).map((key) => {
           if (!users[authedUser]?.answers[key]) {
             return (
-              <Col md="auto" key={key}>
-                <Card
+              <Col data-testid={"question-list"}  md="auto" key={key}>
+                <Card 
                   key={key}
                   id={key}
                   image={users[questions[key].author].avatarURL}
