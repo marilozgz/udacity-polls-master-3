@@ -14,12 +14,8 @@ const LoginSelect = () => {
     const handleChange = (e) => {
         user.state = e.target.value;
         setDisabled(false)
-        console.log(user)
     }
-    function handleActive() {
-        
-    }
-
+  
 
     const handleSubmit = (e) => {
         e.preventDefault();
