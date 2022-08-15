@@ -18,3 +18,8 @@ code {
   background-color: rgb(185, 24, 158) !important;
   border-color: #285e8e; /*set the color you want here*/
 }
+
+.answerchoose{
+  font-weight: 800;
+  color:teal
+}

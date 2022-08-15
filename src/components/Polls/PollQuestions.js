@@ -8,6 +8,7 @@ import { QUESTION_ANSWER_TYPE } from "../../utils/helpers";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getPercentage } from "../../utils/helpers";
+import  Missing  from "../Missing/Missing";
 import "../../App.css"
 
 const PollQuestions= () => {
@@ -19,26 +20,31 @@ const PollQuestions= () => {
     const { optionOne: optionOneVotes, optionTwo: optionTwoVotes } = useSelector(getPollCounts(id));
     const optionOneToText = question?.optionOne?.text;
     const optionTwoToText = question?.optionTwo?.text;
+    const authedUser = useSelector((state) => state.authedUser.authedUser);
 
+    const chooseOptionOne =  question?.optionOne.votes.includes(authedUser)
+    const chooseOptionTwo=  question?.optionTwo.votes.includes(authedUser)
    
     const submitAnswer = (optionType) => {
-        console.log("id")
 
         dispatch(answerQuestion({optionType, user, id}));
     }
 
-    return(
+    return(!question ? <Missing/>: 
+
+   
         <div className="containerquestions">
         <Container >
        
         <Row className="questionsheader"> <Col></Col><Col><h2>Would You Rather?</h2></Col><Col></Col></Row>
         <Row className="questionsrow">
         <Col>
-            <Row className="answer-title">{optionOneToText}</Row>
+        {chooseOptionOne ?  <Row className="answerchoose">{optionOneToText}</Row>:
+            <Row className="answer-title">{optionOneToText}</Row>}
             {donePoll ? (
                 <Row className="answer-votes"><Col>Votes: {optionOneVotes}</Col> <Col>{getPercentage(optionOneVotes,optionTwoVotes)}%</Col></Row>
                 
-
+            
             ) : (
                <Row> <Button
                className="answer-button"
@@ -47,8 +53,8 @@ const PollQuestions= () => {
           </Col>
           <Col></Col>
           <Col>
-            
-            <Row className="answer-title">{optionTwoToText}</Row>
+          {chooseOptionTwo ?  <Row className="answerchoose">{optionOneToText}</Row>:
+            <Row className="answer-title">{optionTwoToText}</Row>}
             {donePoll ? (
                 <Row className="answer-votes"><Col>Votes: {optionTwoVotes}</Col><Col>{getPercentage(optionTwoVotes,optionOneVotes)}%</Col> </Row>
             ) : (
@@ -66,5 +72,6 @@ const PollQuestions= () => {
         
 
     )
+    
 }
 export default PollQuestions 

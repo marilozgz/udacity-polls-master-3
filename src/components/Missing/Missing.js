@@ -15,7 +15,7 @@ const Missing = () => {
             </div>
             <div className="content-col-right col-md p-5 align-self-center text-light">
                 <h1 className="content-title text-left">404 Not Found</h1>
-                <p className="text-left">We sorry, the page you are looking for does not appear. Please back home by pressing button bellow.</p>
+                <p className="text-left">We sorry, the page you are looking for does not appear. Go back with the menu bar.</p>
               
               
                 <img src={ Rocket } alt="" className="img-fluid"/>
