@@ -15,8 +15,6 @@ npm test
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
-
 There are two types of objects stored in local data:
 
 Users
