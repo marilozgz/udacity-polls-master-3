@@ -41,7 +41,7 @@ const PollsAnswered = () => {
         </Row>
         <Row className="justify-content-md-center mb-5">
         {answeredQuestions.map(q => (
-                <Col md="auto" key={q}>
+                <Col md="auto" key={q.id}>
                   <Card
                     image={q.avatarURL}
                     date={q.timestamp}

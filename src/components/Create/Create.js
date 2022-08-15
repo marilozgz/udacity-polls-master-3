@@ -8,7 +8,6 @@ import { generateUID } from "../../utils/_DATA";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import "./createpoll.css"
 const schema = Yup.object().shape({
   optionOne: Yup.string().required(),
   optionTwo: Yup.string().required(),

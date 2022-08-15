@@ -3,7 +3,6 @@ import { Button, Form, Col, Row, Container} from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { setauthedUser } from "../../features/authUser";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
 const LoginSelect = () => {
     const [user, setUser] = useState({});
     const [disabled, setDisabled] = useState({});
@@ -29,11 +28,11 @@ const LoginSelect = () => {
 
     return(
         <Container   fluid>
-        <Row className="loginform">
-        <Row>
- <Row md={12}><h1>Loggin into your account</h1></Row>
+        <Row className="col-md-12">
+         
+        <Row ><h1>Loggin into your account</h1></Row>
         <Col></Col>
-        <Col>
+        <Col className="col-md-8">
         <Form.Select onChange={handleChange} className="mb-3" data-testid="select-user" aria-label="Login User" size="lg">
         <option> Choose your user</option>
         {Object.values(userList).map((key) => (
@@ -46,7 +45,7 @@ const LoginSelect = () => {
         <Col></Col>
         
         </Row>
-        </Row>
+        
         </Container>
     )
 }

@@ -42,9 +42,9 @@ export function PollsUnanswered (props) {
      
  
              {unansweredQuestions.map(q => (
-              <Col data-testid={"question-list"}  md="auto" key={q}>
+              <Col data-testid={"question-list"}  md="auto" key={q.id}>
               <Card 
-                key={q}
+                key={q.id}
                 id={q.id}
                 image={q.avatarURL}  
                 date={q.timestamp}
