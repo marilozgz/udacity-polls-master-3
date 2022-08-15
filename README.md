@@ -1,4 +1,18 @@
-Employ Polls WebApp
+# Employ Polls WebApp
+
+This app is created with Create React App, is algo using Redux-toolkit, React-Router v6, and React-Bootstrap for styles.
+The data is local stored.
+
+## Usage
+```shell
+# Install all the dependencies
+npm install
+# Run the app in local server, as default http://localhost:3000
+npm start
+# Run all the test of the app
+npm test
+```
+
 ## Documentation
 
 [Documentation](https://linktodocumentation)
