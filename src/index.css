@@ -12,17 +12,9 @@ code {
     monospace;
 }
 
-h1.content-title {
-  font-weight: bold;
-  font-size: 25px;
-}
 
-.content {
-  background-image: url(./images/Contentbg.jpg);
-}
-
-.content-button {
-  background-color: #f9ca24;
-  font-size: 14px;
-  font-weight: bold;
+.btn-primary:hover {
+  color: white !important;
+  background-color: rgb(185, 24, 158) !important;
+  border-color: #285e8e; /*set the color you want here*/
 }
